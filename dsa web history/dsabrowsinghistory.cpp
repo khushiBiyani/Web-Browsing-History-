@@ -6,7 +6,7 @@
 #include <vector>
 using namespace std;
  
- 
+unordered_map<string,string> passwords;
  
 // function which returns a pair with url and current date
 pair<string, string> stp(string url)
@@ -151,6 +151,7 @@ public:
 class User
 {
 public:
+
     string email = "";
     bool isLoggedIn = false;
     BrowserHistory bh;
@@ -232,16 +233,18 @@ void command()
 {
     int i = 0, userid = 0;
     User name1;
- 
     while (true)
     {
  
         cout << "1.New User\n2.Existing user\n";
         cout << "Enter: ";
-        string mail, homepage;
+        string mail, homepage,pass;
         cin >> i;
         cout << "Please enter email: ";
         cin >> mail;
+        cout << "Please enter your password: ";
+        cin >> pass;
+        passwords[mail]=pass;
         if (Email_check(mail))
         {
             if (i == 1)
